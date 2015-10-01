@@ -1,0 +1,9 @@
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+version = VERSION_NAME // see root gradle.properties
+
+dependencies {
+	compile libraries.kotlinStdLib
+	testCompile libraries.junit
+}

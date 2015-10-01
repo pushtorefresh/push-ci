@@ -1,0 +1,22 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    // Kotlin Gradle plugin
+    classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.14.449'
+  }
+}
+
+allprojects {
+  repositories {
+    mavenCentral()
+  }
+}
+
+ext.libraries = [
+  kotlinStdLib        : 'org.jetbrains.kotlin:kotlin-stdlib:0.14.449',
+
+  junit : 'junit:junit:4.11'
+]
