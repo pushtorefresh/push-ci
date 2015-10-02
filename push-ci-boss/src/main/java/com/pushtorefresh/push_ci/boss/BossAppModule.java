@@ -3,6 +3,7 @@ package com.pushtorefresh.push_ci.boss;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pushtorefresh.push_ci.boss.configs.BossConfig;
 import com.pushtorefresh.push_ci.boss.request_handlers.PushCiRequestsHandlers;
+import com.pushtorefresh.push_ci.boss.util.FileAccessor;
 
 import java.io.File;
 
@@ -16,6 +17,11 @@ import dagger.Provides;
  */
 @Module
 public class BossAppModule {
+
+  @Provides @Singleton
+  public FileAccessor provideFileAccessor() {
+    return new FileAccessor();
+  }
 
   @Provides @Singleton
   public ObjectMapper provideObjectMapper() {

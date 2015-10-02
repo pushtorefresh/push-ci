@@ -21,7 +21,10 @@ dependencies {
   compile libraries.jacksonDatabind
   compile libraries.jacksonAnnotations
 
+  compile libraries.sqliteJdbc
+
   testCompile libraries.junit
+  testCompile libraries.mockitoCore
 }
 
 task buildSingleJar(type: Jar) {
@@ -35,3 +38,9 @@ task buildSingleJar(type: Jar) {
 }
 
 tasks.build.dependsOn(buildSingleJar)
+
+test {
+  testLogging {
+    events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+  }
+}
