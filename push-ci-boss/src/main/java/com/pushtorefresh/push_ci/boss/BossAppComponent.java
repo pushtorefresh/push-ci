@@ -1,5 +1,6 @@
 package com.pushtorefresh.push_ci.boss;
 
+import com.pushtorefresh.push_ci.boss.db.SQLiteOpenHelper;
 import com.pushtorefresh.push_ci.boss.requests_handlers.RequestsHandlersModule;
 
 import javax.inject.Singleton;
@@ -15,4 +16,5 @@ import dagger.Component;
 )
 public interface BossAppComponent {
   void inject(BossApp bossApp);
+  void inject(SQLiteOpenHelper sqLiteOpenHelper);
 }
