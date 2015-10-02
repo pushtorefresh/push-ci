@@ -1,3 +1,6 @@
+# Convinient for development
+boss_config.json
+
 .gradle/
 build/
 
