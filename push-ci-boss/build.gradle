@@ -1,9 +1,37 @@
 apply plugin: 'java'
+apply plugin: 'net.ltgt.apt'
 apply plugin: 'kotlin'
 
 version = VERSION_NAME // see root gradle.properties
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 dependencies {
-	compile libraries.kotlinStdLib
-	testCompile libraries.junit
+  compile libraries.kotlinStdLib
+
+  compile libraries.dagger
+  apt libraries.daggerCompiler
+  compile libraries.javaxAnnotation
+
+  compile libraries.rxNetty
+  compile libraries.rxJava
+
+  compile libraries.jacksonCore
+  compile libraries.jacksonDatabind
+  compile libraries.jacksonAnnotations
+
+  testCompile libraries.junit
 }
+
+task buildSingleJar(type: Jar) {
+  manifest {
+    attributes 'Main-Class': 'com.pushtorefresh.push_ci.boss.BossApp'
+  }
+
+  baseName = project.name + '-single-jar'
+  from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+  with jar
+}
+
+tasks.build.dependsOn(buildSingleJar)
